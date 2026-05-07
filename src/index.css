@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap');
+
+:root {
+  --bg: #020a1b;
+  --nav-bg: #04112d;
+  --card-bg: #081735;
+  --line: rgba(62, 90, 139, 0.35);
+  --line-strong: rgba(109, 145, 204, 0.42);
+  --text: #f2f6ff;
+  --text-soft: #d1ddf6;
+  --text-warm: #ffad70;
+  --text-cool: #7ee8ff;
+  --brand: #13c8ff;
+  --control-bg: rgba(20, 40, 78, 0.7);
+  --control-bg-soft: rgba(22, 36, 65, 0.84);
+  --tag-bg: rgba(11, 25, 52, 0.66);
+  --avatar-ring-shadow: rgba(7, 20, 49, 0.5);
+  --avatar-drop-shadow: rgba(0, 0, 0, 0.35);
+  --icon-chip-bg: linear-gradient(135deg, rgba(24, 69, 136, 0.5), rgba(8, 30, 68, 0.7));
+  --icon-chip-border: rgba(111, 162, 237, 0.35);
+  --icon-chip-shadow: rgba(35, 129, 255, 0.18);
+  --projects-hero-bg: linear-gradient(180deg, rgba(16, 48, 95, 0.9), rgba(6, 20, 48, 0.9)),
+    radial-gradient(circle at 60% 0%, rgba(112, 78, 201, 0.4), transparent 44%);
+  --filter-bg: rgba(21, 43, 83, 0.58);
+  --filter-active-bg: rgba(70, 95, 138, 0.72);
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  --font-heading: 'Sora', 'Segoe UI', sans-serif;
+}
+
+:root[data-theme='light'] {
+  --bg: #ecf3ff;
+  --nav-bg: #f8fbff;
+  --card-bg: #ffffff;
+  --line: rgba(107, 137, 182, 0.28);
+  --line-strong: rgba(103, 135, 184, 0.45);
+  --text: #0e1f3d;
+  --text-soft: #304a71;
+  --text-warm: #cc6429;
+  --text-cool: #0c7bc4;
+  --brand: #0095e4;
+  --control-bg: rgba(232, 241, 255, 0.95);
+  --control-bg-soft: rgba(242, 248, 255, 0.96);
+  --tag-bg: rgba(234, 243, 255, 0.9);
+  --avatar-ring-shadow: rgba(130, 170, 226, 0.2);
+  --avatar-drop-shadow: rgba(20, 58, 107, 0.14);
+  --icon-chip-bg: linear-gradient(135deg, rgba(214, 231, 255, 0.9), rgba(239, 246, 255, 0.96));
+  --icon-chip-border: rgba(124, 165, 226, 0.45);
+  --icon-chip-shadow: rgba(102, 151, 222, 0.2);
+  --projects-hero-bg: linear-gradient(180deg, rgba(218, 235, 255, 0.95), rgba(226, 240, 255, 0.92)),
+    radial-gradient(circle at 60% 0%, rgba(159, 187, 247, 0.4), transparent 44%);
+  --filter-bg: rgba(227, 239, 255, 0.92);
+  --filter-active-bg: rgba(189, 217, 253, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 78% -12%, rgba(73, 58, 158, 0.42), transparent 38%),
+    radial-gradient(circle at 8% 0%, rgba(21, 106, 196, 0.42), transparent 30%),
+    linear-gradient(180deg, #020a1b 0%, #010713 100%);
+}
+
+:root[data-theme='light'] body {
+  background:
+    radial-gradient(circle at 78% -12%, rgba(92, 157, 255, 0.22), transparent 38%),
+    radial-gradient(circle at 8% 0%, rgba(42, 166, 225, 0.18), transparent 30%),
+    linear-gradient(180deg, #eff5ff 0%, #e8f0ff 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
