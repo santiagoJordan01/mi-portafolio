@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { getNavItems, getPortfolio, getUiText } from './data/portfolioData'
 import HomePage from './pages/HomePage'
@@ -13,16 +13,16 @@ function Footer({ portfolio, uiText }) {
         <p>{portfolio.brand}</p>
         <ul>
           <li>
-            <a href="/#experiencia">{uiText.footerExperience}</a>
+            <Link to="/?section=experiencia">{uiText.footerExperience}</Link>
           </li>
           <li>
-            <a href="/#sobre-mi">{uiText.footerAbout}</a>
+            <Link to="/?section=sobre-mi">{uiText.footerAbout}</Link>
           </li>
           <li>
-            <a href="/#tecnologias">{uiText.footerTechnologies}</a>
+            <Link to="/?section=tecnologias">{uiText.footerTechnologies}</Link>
           </li>
           <li>
-            <a href="/proyectos">{uiText.footerProjects}</a>
+            <Link to="/proyectos">{uiText.footerProjects}</Link>
           </li>
         </ul>
       </div>

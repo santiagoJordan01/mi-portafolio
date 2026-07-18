@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FaChevronDown, FaGithub, FaLinkedinIn, FaMoon, FaSun } from 'react-icons/fa'
 
-function anchorHref(anchor, isHome) {
-  return isHome ? `#${anchor}` : `/#${anchor}`
+function sectionLink(anchor) {
+  return `/?section=${anchor}`
 }
 
 function routeIsActive(pathname, targetPath) {
@@ -24,7 +24,6 @@ export default function Navbar({
   setTheme,
 }) {
   const location = useLocation()
-  const isHome = location.pathname === '/'
   const isDark = theme === 'dark'
   const [isLangOpen, setIsLangOpen] = useState(false)
   const langMenuRef = useRef(null)
@@ -70,9 +69,9 @@ export default function Navbar({
                     {item.label}
                   </Link>
                 ) : (
-                  <a className="nav-link" href={anchorHref(item.anchor, isHome)}>
+                  <Link className="nav-link" to={sectionLink(item.anchor)}>
                     {item.label}
-                  </a>
+                  </Link>
                 )}
               </li>
             ))}

@@ -1,9 +1,26 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import { getTechnologyIcon } from '../data/technologyIcons'
 
 export default function HomePage({ portfolio, uiText }) {
+  const location = useLocation()
   const featuredProjects = portfolio.projects.slice(0, 3)
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const section = params.get('section')
+
+    if (!section) {
+      return
+    }
+
+    const target = document.getElementById(section)
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [location.search])
 
   return (
     <>
@@ -35,9 +52,9 @@ export default function HomePage({ portfolio, uiText }) {
               <a href={`tel:${portfolio.social.phoneRaw}`}>{portfolio.social.phone}</a>
             </div>
 
-            <a className="hero-jump" href="#experiencia">
+            <Link className="hero-jump" to="/?section=experiencia">
               {uiText.experience}
-            </a>
+            </Link>
           </div>
 
           <div className="hero-photo-wrap">

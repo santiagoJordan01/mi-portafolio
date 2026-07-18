@@ -1,3 +1,5 @@
+const publicAsset = (fileName) => `${import.meta.env.BASE_URL}${encodeURIComponent(fileName)}`
+
 const shared = {
   brand: 'codev',
   name: 'Santiago Jordan Vargas',
@@ -8,8 +10,8 @@ const shared = {
     phone: '322 834 3350',
     phoneRaw: '573228343350',
   },
-  profileImage: '/foto de perfil portfolio.jpg',
-  cvUrl: '/hoja de vida Santiago Jordan Vargas.pdf',
+  profileImage: publicAsset('foto de perfil portfolio.jpg'),
+  cvUrl: publicAsset('hoja de vida Santiago Jordan Vargas.pdf'),
   projects: [
     {
       slug: 'campanas-correos-mern',
@@ -98,7 +100,7 @@ const portfolioEs = {
     {
       role: 'Desarrollador Full Stack PHP',
       company: 'DEUR',
-      period: 'Noviembre 2025 - Actualidad',
+      period: 'Noviembre 2023 - Actualidad',
       bullets: [
         'Desarrollo y mantenimiento de aplicaciones empresariales con Laravel.',
         'Soporte tecnico y funcional, instalaciones POS y capacitacion.',
@@ -108,7 +110,7 @@ const portfolioEs = {
     {
       role: 'Desarrollador Full Stack Freelance',
       company: 'Proyectos para clientes',
-      period: 'Mayo 2025 - Noviembre 2025',
+      period: 'Mayo 2023 - Noviembre 2023',
       bullets: [
         'Construccion de aplicaciones web full stack con Laravel, React y Node.js.',
         'Implementacion de APIs REST, paneles administrativos y sistemas CRUD.',
@@ -147,7 +149,7 @@ const portfolioEn = {
     {
       role: 'Full Stack PHP Developer',
       company: 'DEUR',
-      period: 'November 2025 - Present',
+      period: 'November 2023 - Present',
       bullets: [
         'Built and maintained enterprise applications with Laravel.',
         'Provided technical and functional support, POS setup, and user training.',
@@ -157,7 +159,7 @@ const portfolioEn = {
     {
       role: 'Freelance Full Stack Developer',
       company: 'Client Projects',
-      period: 'May 2025 - November 2025',
+      period: 'May 2023 - November 2023',
       bullets: [
         'Built full stack web applications with Laravel, React, and Node.js.',
         'Implemented REST APIs, admin panels, and CRUD systems.',
