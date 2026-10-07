@@ -2,17 +2,15 @@ import { useMemo, useState } from 'react'
 import ProjectCard from '../components/ProjectCard'
 
 export default function ProjectsPage({ portfolio, uiText }) {
-  const [activeFilter, setActiveFilter] = useState(portfolio.projectFilters[0])
-
-  const allFilter = portfolio.projectFilters[0]
+  const [activeFilter, setActiveFilter] = useState(portfolio.projectFilters[0].key)
 
   const visibleProjects = useMemo(() => {
-    if (activeFilter === allFilter) {
+    if (activeFilter === 'all') {
       return portfolio.projects
     }
 
-    return portfolio.projects.filter((project) => project.category === activeFilter)
-  }, [activeFilter, allFilter, portfolio.projects])
+    return portfolio.projects.filter((project) => project.categoryKey === activeFilter)
+  }, [activeFilter, portfolio.projects])
 
   return (
     <>
@@ -28,19 +26,20 @@ export default function ProjectsPage({ portfolio, uiText }) {
           <div className="project-filters" role="tablist" aria-label={uiText.projectFiltersAria}>
             {portfolio.projectFilters.map((filter) => (
               <button
-                key={filter}
+                key={filter.key}
                 type="button"
-                className={`filter-button ${activeFilter === filter ? 'is-active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
+                className={`filter-button ${activeFilter === filter.key ? 'is-active' : ''}`}
+                aria-pressed={activeFilter === filter.key}
+                onClick={() => setActiveFilter(filter.key)}
               >
-                {filter}
+                {filter.label}
               </button>
             ))}
           </div>
 
-          <div className="projects-grid route-grid">
+          <div className="case-list">
             {visibleProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} ctaLabel={uiText.viewProject} />
+              <ProjectCard key={project.slug} project={project} variant="full" uiText={uiText} />
             ))}
           </div>
         </div>

@@ -3,14 +3,29 @@ import { HashRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { getNavItems, getPortfolio, getUiText } from './data/portfolioData'
 import HomePage from './pages/HomePage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
 import ProjectsPage from './pages/ProjectsPage'
 import './App.css'
 
 function Footer({ portfolio, uiText }) {
   return (
     <footer className="site-footer">
+      <div className="container footer-cta">
+        <div>
+          <p className="availability">{portfolio.availability}</p>
+          <p className="footer-cta-copy">{uiText.footerCta}</p>
+        </div>
+        <div className="footer-actions">
+          <a className="btn btn-primary" href={portfolio.whatsappUrl} target="_blank" rel="noreferrer">
+            {uiText.whatsapp}
+          </a>
+          <a className="btn btn-secondary" href={portfolio.contactUrl} target="_blank" rel="noreferrer">
+            {uiText.emailCta}
+          </a>
+        </div>
+      </div>
       <div className="container footer-inner">
-        <p>{portfolio.brand}</p>
+        <p>{portfolio.name}</p>
         <ul>
           <li>
             <Link to="/?section=experiencia">{uiText.footerExperience}</Link>
@@ -55,6 +70,14 @@ function App() {
   const navItems = useMemo(() => getNavItems(language), [language])
   const uiText = useMemo(() => getUiText(language), [language])
 
+  useEffect(() => {
+    document.title = uiText.documentTitle
+    const meta = document.querySelector('meta[name="description"]')
+    if (meta) {
+      meta.setAttribute('content', uiText.metaDescription)
+    }
+  }, [uiText])
+
   return (
     <HashRouter>
       <div className="site-shell">
@@ -76,6 +99,10 @@ function App() {
           <Route
             path="/proyectos"
             element={<ProjectsPage portfolio={portfolio} uiText={uiText} />}
+          />
+          <Route
+            path="/proyectos/:slug"
+            element={<ProjectDetailPage portfolio={portfolio} uiText={uiText} />}
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

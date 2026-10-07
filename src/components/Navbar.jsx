@@ -54,7 +54,7 @@ export default function Navbar({
     <header className="site-nav">
       <div className="container nav-inner">
         <Link className="brand" to="/">
-          {portfolio.brand}
+          {portfolio.name}
         </Link>
 
         <nav aria-label={uiText.navAria}>
@@ -130,7 +130,14 @@ export default function Navbar({
             {isDark ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
           </button>
 
-          <a className="chip" href={portfolio.cvUrl} target="_blank" rel="noreferrer">
+          <a
+            className="chip"
+            href={portfolio.cvUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={uiText.downloadCv}
+            title={uiText.downloadCv}
+          >
             CV
           </a>
           <a

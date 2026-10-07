@@ -6,7 +6,7 @@ import { getTechnologyIcon } from '../data/technologyIcons'
 
 export default function HomePage({ portfolio, uiText }) {
   const location = useLocation()
-  const featuredProjects = portfolio.projects.slice(0, 3)
+  const featuredProjects = portfolio.projects
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -27,10 +27,14 @@ export default function HomePage({ portfolio, uiText }) {
       <section className="hero-section" id="presentacion">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="role">{portfolio.role}</p>
+            <div className="role-row">
+              <p className="role">{portfolio.role}</p>
+              <p className="availability">{portfolio.availability}</p>
+            </div>
             <h1>
-              {portfolio.heroTitle.split(' ').slice(0, 2).join(' ')}{' '}
-              <span>{portfolio.heroTitle.split(' ').slice(2).join(' ')}</span>
+              {portfolio.headlineBefore}
+              <span>{portfolio.headlineAccent}</span>
+              {portfolio.headlineAfter}
             </h1>
 
             <div className="pitch-lines">
@@ -41,51 +45,36 @@ export default function HomePage({ portfolio, uiText }) {
               ))}
             </div>
 
-            <div className="social-links">
-              <a href={portfolio.social.linkedin} target="_blank" rel="noreferrer">
-                {uiText.linkedin}
+            <div className="hero-actions">
+              <a className="btn btn-primary" href={portfolio.whatsappUrl} target="_blank" rel="noreferrer">
+                {uiText.whatsapp}
               </a>
-              <a href={portfolio.social.github} target="_blank" rel="noreferrer">
-                {uiText.github}
+              <a className="btn btn-secondary" href={portfolio.contactUrl} target="_blank" rel="noreferrer">
+                {uiText.emailCta}
               </a>
-              <a href={`mailto:${portfolio.social.email}`}>{portfolio.social.email}</a>
-              <a href={`tel:${portfolio.social.phoneRaw}`}>{portfolio.social.phone}</a>
+              <Link className="btn btn-ghost" to="/?section=proyectos">
+                {uiText.viewCases}
+              </Link>
             </div>
-
-            <Link className="hero-jump" to="/?section=experiencia">
-              {uiText.experience}
-            </Link>
           </div>
 
           <div className="hero-photo-wrap">
-            <img
-              src={portfolio.profileImage}
-              alt="Foto de perfil de Santiago Jordan Vargas"
-              loading="lazy"
-            />
+            <img src={portfolio.profileImage} alt={uiText.profileAlt} />
           </div>
         </div>
       </section>
 
-      <section className="content-section" id="experiencia">
+      <section className="content-section proof-section" id="pruebas">
         <div className="container">
-          <h2>{uiText.experience}</h2>
-
-          <div className="experience-items">
-            {portfolio.experience.map((job) => (
-              <article className="experience-item" key={`${job.company}-${job.period}`}>
-                <h3>
-                  {job.role} <span>- {job.company}</span>
-                </h3>
-                <p className="meta">{job.period}</p>
-                <ul>
-                  {job.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </article>
+          <h2>{uiText.proofs}</h2>
+          <ul className="proof-grid">
+            {portfolio.proofs.map((proof) => (
+              <li className="proof-card" key={proof.title}>
+                <h3>{proof.title}</h3>
+                <p>{proof.text}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -101,8 +90,7 @@ export default function HomePage({ portfolio, uiText }) {
               <ProjectCard
                 key={project.slug}
                 project={project}
-                compact
-                ctaLabel={uiText.viewProject}
+                uiText={uiText}
               />
             ))}
           </div>
@@ -113,17 +101,37 @@ export default function HomePage({ portfolio, uiText }) {
         </div>
       </section>
 
+      <section className="content-section" id="experiencia">
+        <div className="container">
+          <h2>{uiText.experience}</h2>
+
+          <div className="experience-items">
+            {portfolio.experience.map((job) => (
+              <article className="experience-item" key={`${job.company}-${job.period}`}>
+                <h3>
+                  {job.role} <span>— {job.company}</span>
+                </h3>
+                <p className="meta">{job.period}</p>
+                <ul>
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet.lead}>
+                      <strong>{bullet.lead}</strong> {bullet.text}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="content-section" id="sobre-mi">
         <div className="container">
           <h2>{uiText.about}</h2>
 
           <div className="about-grid">
             <div className="about-image">
-              <img
-                src={portfolio.profileImage}
-                alt="Retrato profesional de Santiago Jordan Vargas"
-                loading="lazy"
-              />
+              <img src={portfolio.profileImage} alt={uiText.aboutAlt} loading="lazy" />
             </div>
 
             <div className="about-text">
@@ -134,8 +142,8 @@ export default function HomePage({ portfolio, uiText }) {
           </div>
 
           <div className="about-cv">
-            <a href={portfolio.cvUrl} target="_blank" rel="noreferrer">
-              {uiText.viewResume}
+            <a className="btn btn-primary" href={portfolio.cvUrl} target="_blank" rel="noreferrer">
+              {uiText.downloadCv}
             </a>
           </div>
         </div>

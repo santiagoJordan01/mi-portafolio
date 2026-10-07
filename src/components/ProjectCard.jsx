@@ -1,25 +1,91 @@
-export default function ProjectCard({ project, compact = false, ctaLabel = 'Ver proyecto' }) {
+import { Link } from 'react-router-dom'
+
+export default function ProjectCard({ project, variant = 'compact', uiText, omitIntro = false }) {
+  const isFull = variant === 'full'
+
   return (
-    <article className={`project-card ${compact ? 'is-compact' : ''}`}>
-      <div className={`project-cover ${project.tone}`}>
-        <span className="project-badge">{project.category}</span>
-        <p className="project-cover-title">{project.subtitle}</p>
-      </div>
+    <article className={`project-card ${isFull ? 'is-full' : 'is-compact'}`} id={project.slug}>
+      {isFull && !omitIntro ? (
+        <header className="case-header">
+          <p className="case-kicker">{project.category}</p>
+          <h2>{project.title}</h2>
+          <p className="case-what">{project.what}</p>
+          <p className="case-summary">{project.summary}</p>
+        </header>
+      ) : null}
+      {isFull ? null : (
+        <div className={`project-cover ${project.tone}`}>
+          <span className="project-badge">{project.category}</span>
+          <div className="project-cover-copy">
+            <h3 className="project-cover-title">
+              <Link to={`/proyectos/${project.slug}`}>{project.title}</Link>
+            </h3>
+            <p className="project-cover-what">{project.what}</p>
+          </div>
+        </div>
+      )}
 
-      <div className="project-content">
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-
-        <ul className="tag-list">
-          {project.tags.map((tag) => (
-            <li key={`${project.slug}-${tag}`}>{tag}</li>
-          ))}
-        </ul>
-
-        <a href={project.url} target="_blank" rel="noreferrer">
-          {ctaLabel}
-        </a>
-      </div>
+      {isFull ? (
+        <>
+          <div className="case-sections">
+            <section>
+              <h3>{uiText.problem}</h3>
+              <p>{project.problem}</p>
+            </section>
+            <section>
+              <h3>{uiText.solution}</h3>
+              <p>{project.solution}</p>
+            </section>
+            <section>
+              <h3>{uiText.results}</h3>
+              <ul className="case-results">
+                {project.results.map((result) => (
+                  <li key={result}>{result}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+          <footer className="case-footer">
+            <ul className="tag-list">
+              {project.tags.map((tag) => (
+                <li key={`${project.slug}-${tag}`}>{tag}</li>
+              ))}
+            </ul>
+            <div className="project-actions">
+              {project.demoUrl ? (
+                <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noreferrer">
+                  {uiText.viewDemo}
+                </a>
+              ) : null}
+              <a className="btn btn-secondary" href={project.repoUrl} target="_blank" rel="noreferrer">
+                {uiText.viewCode}
+              </a>
+            </div>
+          </footer>
+        </>
+      ) : (
+        <div className="project-content">
+          <p>{project.summary}</p>
+          <ul className="tag-list">
+            {project.tags.map((tag) => (
+              <li key={`${project.slug}-${tag}`}>{tag}</li>
+            ))}
+          </ul>
+          <div className="project-actions">
+            {project.demoUrl ? (
+              <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noreferrer">
+                {uiText.viewDemo}
+              </a>
+            ) : null}
+            <a className="btn btn-secondary" href={project.repoUrl} target="_blank" rel="noreferrer">
+              {uiText.viewCode}
+            </a>
+            <Link className="btn btn-ghost" to={`/proyectos/${project.slug}`}>
+              {uiText.readCase}
+            </Link>
+          </div>
+        </div>
+      )}
     </article>
   )
 }

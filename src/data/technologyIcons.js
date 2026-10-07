@@ -2,11 +2,12 @@ import { FaCss3Alt, FaDocker, FaGitAlt, FaGithub, FaHtml5, FaLaravel, FaNodeJs, 
 import { GiBullHorns } from 'react-icons/gi'
 import { LuShieldCheck } from 'react-icons/lu'
 import { MdSpaceDashboard } from 'react-icons/md'
-import { SiExpress, SiJavascript, SiMongodb, SiMysql, SiPostman, SiRedis, SiSupabase } from 'react-icons/si'
+import { SiExpress, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiPostgresql, SiPostman, SiRedis, SiSupabase } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 
 const iconMap = {
   React: { Icon: FaReact, color: '#57d4ff' },
+  'Next.js': { Icon: SiNextdotjs, color: '#f2f6ff' },
   JavaScript: { Icon: SiJavascript, color: '#f7df1e' },
   HTML: { Icon: FaHtml5, color: '#ff744a' },
   CSS: { Icon: FaCss3Alt, color: '#4fb2ff' },
@@ -17,6 +18,7 @@ const iconMap = {
   'REST APIs': { Icon: TbApi, color: '#72b8ff' },
   RBAC: { Icon: LuShieldCheck, color: '#7ce8ff' },
   MySQL: { Icon: SiMysql, color: '#79b6ff' },
+  PostgreSQL: { Icon: SiPostgresql, color: '#7eb6ff' },
   MongoDB: { Icon: SiMongodb, color: '#66d17f' },
   Supabase: { Icon: SiSupabase, color: '#58e6a8' },
   Redis: { Icon: SiRedis, color: '#ff7a70' },
