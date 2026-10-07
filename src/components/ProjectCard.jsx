@@ -10,10 +10,22 @@ export default function ProjectCard({ project, variant = 'compact', uiText, omit
           <p className="case-kicker">{project.category}</p>
           <h2>{project.title}</h2>
           <p className="case-what">{project.what}</p>
+          <p className="case-role">
+            <strong>{uiText.whatIDid}.</strong> {project.role}
+          </p>
           <p className="case-summary">{project.summary}</p>
         </header>
       ) : null}
-      {isFull ? null : (
+      {isFull ? (
+        project.image ? (
+          <img className="case-shot" src={project.image} alt="" />
+        ) : null
+      ) : project.image ? (
+        <Link className="project-shot" to={`/proyectos/${project.slug}`}>
+          <img src={project.image} alt="" />
+          <span className="project-badge">{project.category}</span>
+        </Link>
+      ) : (
         <div className={`project-cover ${project.tone}`}>
           <span className="project-badge">{project.category}</span>
           <div className="project-cover-copy">
@@ -65,6 +77,10 @@ export default function ProjectCard({ project, variant = 'compact', uiText, omit
         </>
       ) : (
         <div className="project-content">
+          <h3>
+            <Link to={`/proyectos/${project.slug}`}>{project.title}</Link>
+          </h3>
+          <p className="project-what">{project.what}</p>
           <p>{project.summary}</p>
           <ul className="tag-list">
             {project.tags.map((tag) => (

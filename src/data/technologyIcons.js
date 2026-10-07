@@ -2,13 +2,14 @@ import { FaCss3Alt, FaDocker, FaGitAlt, FaGithub, FaHtml5, FaLaravel, FaNodeJs, 
 import { GiBullHorns } from 'react-icons/gi'
 import { LuShieldCheck } from 'react-icons/lu'
 import { MdSpaceDashboard } from 'react-icons/md'
-import { SiExpress, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiPostgresql, SiPostman, SiRedis, SiSupabase } from 'react-icons/si'
+import { SiExpress, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiPostgresql, SiRedis, SiSupabase, SiTypescript } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 
 const iconMap = {
   React: { Icon: FaReact, color: '#57d4ff' },
   'Next.js': { Icon: SiNextdotjs, color: '#f2f6ff' },
   JavaScript: { Icon: SiJavascript, color: '#f7df1e' },
+  TypeScript: { Icon: SiTypescript, color: '#4f8dff' },
   HTML: { Icon: FaHtml5, color: '#ff744a' },
   CSS: { Icon: FaCss3Alt, color: '#4fb2ff' },
   'Admin Panels': { Icon: MdSpaceDashboard, color: '#9ec9ff' },
@@ -26,7 +27,6 @@ const iconMap = {
   GitHub: { Icon: FaGithub, color: '#f2f6ff' },
   Docker: { Icon: FaDocker, color: '#6ad3ff' },
   Bull: { Icon: GiBullHorns, color: '#ffb76a' },
-  Postman: { Icon: SiPostman, color: '#ff9559' },
 }
 
 export function getTechnologyIcon(name) {

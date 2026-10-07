@@ -19,6 +19,9 @@ export default function ProjectDetailPage({ portfolio, uiText }) {
           <p className="case-kicker">{project.category}</p>
           <h1>{project.title}</h1>
           <p className="case-what">{project.what}</p>
+          <p className="case-role">
+            <strong>{uiText.whatIDid}.</strong> {project.role}
+          </p>
           <p>{project.summary}</p>
         </div>
       </section>
