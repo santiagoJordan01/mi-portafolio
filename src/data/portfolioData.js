@@ -275,7 +275,7 @@ const portfolioEs = {
     {
       role: 'Desarrollador Full Stack PHP',
       company: 'DEUR',
-      period: 'Noviembre 2023 – 2026',
+      period: 'Noviembre 2023 – Actualidad',
       bullets: [
         {
           lead: 'Facturación electrónica (DIAN).',
@@ -365,7 +365,7 @@ const portfolioEn = {
     {
       role: 'Full Stack PHP Developer',
       company: 'DEUR',
-      period: 'November 2023 – 2026',
+      period: 'November 2023 – Present',
       bullets: [
         {
           lead: 'Electronic invoicing (DIAN).',

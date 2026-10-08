@@ -1,16 +1,30 @@
-# React + Vite
+# Portafolio de Santiago Jordán Vargas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio de casos de estudio para un rol full stack. Cuenta el problema de negocio, la decisión técnica y el resultado de operación, en español y en inglés.
 
-Currently, two official plugins are available:
+Sitio publicado: https://santiagojordan01.github.io/mi-portafolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Qué muestra
 
-## React Compiler
+- Facturación electrónica ante la DIAN, lectura de básculas en caja e impresión de tiquetes.
+- Casos: campañas de correo, CRM empresarial, PhoneColombia, chat de atención y control de horas.
+- Hoja de vida en PDF con texto seleccionable.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+React, Vite y React Router. El build deja HTML estático de cada caso para que el contenido exista sin ejecutar JavaScript.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+## Publicar
+
+```bash
+npm run deploy
+```
+
+Eso genera el sitio, prerenderiza las rutas y lo publica en GitHub Pages.

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { HashRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { getNavItems, getPortfolio, getUiText } from './data/portfolioData'
 import HomePage from './pages/HomePage'
@@ -70,16 +70,8 @@ function App() {
   const navItems = useMemo(() => getNavItems(language), [language])
   const uiText = useMemo(() => getUiText(language), [language])
 
-  useEffect(() => {
-    document.title = uiText.documentTitle
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) {
-      meta.setAttribute('content', uiText.metaDescription)
-    }
-  }, [uiText])
-
   return (
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <div className="site-shell">
         <Navbar
           portfolio={portfolio}
@@ -109,7 +101,7 @@ function App() {
 
         <Footer portfolio={portfolio} uiText={uiText} />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

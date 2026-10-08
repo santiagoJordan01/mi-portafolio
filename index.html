@@ -2,16 +2,74 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Santiago Jordán Vargas | Desarrollador Full Stack</title>
     <meta
       name="description"
       content="Desarrollador full stack con más de 3 años poniendo en producción integraciones, automatización y software de operación con Laravel, React y Node.js. Disponible de inmediato."
     />
-    <title>Santiago Jordán Vargas | Desarrollador Full Stack</title>
+    <link rel="canonical" href="https://santiagojordan01.github.io/mi-portafolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Santiago Jordán Vargas" />
+    <meta property="og:title" content="Santiago Jordán Vargas | Desarrollador Full Stack" />
+    <meta
+      property="og:description"
+      content="Pongo en producción software que integra, automatiza y sostiene la operación. Facturación electrónica, básculas en caja e impresión donde está el operador."
+    />
+    <meta property="og:url" content="https://santiagojordan01.github.io/mi-portafolio/" />
+    <meta property="og:image" content="https://santiagojordan01.github.io/mi-portafolio/foto%20de%20perfil%20portfolio.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Santiago Jordán Vargas | Desarrollador Full Stack" />
+    <meta
+      name="twitter:description"
+      content="Pongo en producción software que integra, automatiza y sostiene la operación."
+    />
+    <meta name="twitter:image" content="https://santiagojordan01.github.io/mi-portafolio/foto%20de%20perfil%20portfolio.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Santiago Jordán Vargas",
+        "jobTitle": "Desarrollador Full Stack",
+        "url": "https://santiagojordan01.github.io/mi-portafolio/",
+        "email": "mailto:santijordanv@gmail.com",
+        "telephone": "+573228343350",
+        "sameAs": [
+          "https://github.com/santiagoJordan01",
+          "https://www.linkedin.com/in/santiago-jord%C3%A1n-vargas-156363246/"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <script>
+      ;(function () {
+        var base = location.pathname.indexOf('/mi-portafolio') === 0 ? '/mi-portafolio' : ''
+        if (location.hash.indexOf('#/') === 0) {
+          location.replace(base + location.hash.slice(1))
+          return
+        }
+        var redirected = new URLSearchParams(location.search).get('p')
+        if (redirected && redirected.charAt(0) === '/') {
+          history.replaceState(null, '', base + redirected)
+        }
+      })()
+    </script>
     <div id="root"></div>
+    <noscript>
+      <h1>Santiago Jordán Vargas</h1>
+      <p>Pongo en producción software que integra, automatiza y sostiene la operación.</p>
+      <p>
+        Casos de estudio: Campañas de correo, CRM empresarial, PhoneColombia, Chat de atención y
+        Control de horas.
+      </p>
+      <p>
+        En producción: facturación electrónica ante la DIAN, lectura de básculas en caja e impresión
+        de tiquetes donde está el operador.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,8 +1,17 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import ProjectCard from '../components/ProjectCard'
+import { setPageMeta } from '../seo'
 
 export default function ProjectsPage({ portfolio, uiText }) {
   const [activeFilter, setActiveFilter] = useState(portfolio.projectFilters[0].key)
+
+  useEffect(() => {
+    setPageMeta({
+      title: `${uiText.projects} | ${portfolio.name}`,
+      description: uiText.projectsPageDescription,
+      path: '/proyectos',
+    })
+  }, [portfolio.name, uiText])
 
   const visibleProjects = useMemo(() => {
     if (activeFilter === 'all') {

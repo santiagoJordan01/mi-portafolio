@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import { getTechnologyIcon } from '../data/technologyIcons'
+import { setPageMeta } from '../seo'
 
 export default function HomePage({ portfolio, uiText }) {
   const location = useLocation()
   const featuredProjects = portfolio.projects
+
+  useEffect(() => {
+    setPageMeta({
+      title: uiText.documentTitle,
+      description: uiText.metaDescription,
+      path: '/',
+    })
+  }, [uiText])
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)

@@ -1,9 +1,23 @@
+import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
+import { setPageMeta } from '../seo'
 
 export default function ProjectDetailPage({ portfolio, uiText }) {
   const { slug } = useParams()
   const project = portfolio.projects.find((item) => item.slug === slug)
+
+  useEffect(() => {
+    if (!project) {
+      return
+    }
+    setPageMeta({
+      title: `${project.title} | ${portfolio.name}`,
+      description: project.what,
+      path: `/proyectos/${project.slug}`,
+      image: project.image,
+    })
+  }, [portfolio.name, project])
 
   if (!project) {
     return <Navigate to="/proyectos" replace />

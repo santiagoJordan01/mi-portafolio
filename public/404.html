@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Santiago Jordán Vargas</title>
+    <script>
+      var segment = '/mi-portafolio'
+      var path = location.pathname
+      var rest = path.indexOf(segment) === 0 ? path.slice(segment.length) : path
+      if (!rest) rest = '/'
+      location.replace(segment + '/?p=' + encodeURIComponent(rest + location.search + location.hash))
+    </script>
+  </head>
+  <body></body>
+</html>
